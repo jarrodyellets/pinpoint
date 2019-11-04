@@ -18,7 +18,8 @@
     },
     "scripts": {
         "test": "lab -a @hapi/code -t 100 -L -Y",
-        "test-cov-html": "lab -a @hapi/code -t 100 -L -r html -o coverage.html"
+        "test-cov-html": "lab -a @hapi/code -t 100 -L -r html -o coverage.html",
+        "generateDocs": "typedoc static/lib/types/%NAME% --out static/type-docs/%NAME% --mode file --readme none --target ES6 --plugin typedoc-plugin-markdown --ignoreCompilerErrors --includeDeclarations --disableOutputCheck --excludeExternals -hideSources -hideBreadcrumbs"
     },
     "license": "BSD-3-Clause"
 }
