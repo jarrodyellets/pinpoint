@@ -4,22 +4,14 @@ on: [push]
 
 jobs:
   build:
-    name: Build
-    runs-on: ubuntu-18.04
-    strategy:
-      matrix:
-        node_version: [10, 12]
+
+    runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v1
-    - name: Use Node.js ${{ matrix.node_version }}
-      uses: actions/setup-node@v1
-      with:
-        version: ${{ matrix.node_version }}
-
-    - name: npm install
+    - name: install typedoc
+      run: npm install typedoc typedoc-plugin-markdown
+    - name: Run a multi-line script
       run: |
-        npm install
-        npm install typedoc typedoc-plugin-markdown
         typedoc lib --mode file --readme none --target ES6 --plugin typedoc-plugin-markdown --ignoreCompilerErrors --includeDeclarations --disableOutputCheck --excludeExternals -hideSources -hideBreadcrumbs
         
